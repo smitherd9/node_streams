@@ -9,16 +9,16 @@ NumberTran.prototype = Object.create(stream.Transform.prototype);
 NumberTran.prototype.constructor = NumberTran;
 
 NumberTran.prototype._transform = function(chunk, encoding, callback) {
-    for (var i = 0; i < chunk.length; i++){
-    if (chunk[i] <= 99){
-        chunk[i] == 0;
-     }
-    //  return chunk[i];
-     
+    
+    if (chunk <= 99){
+        chunk = '0';
     }
-    console.log(chunk.toString('utf-8'));
+     
+    //  return chunk[i];
+    console.log(chunk.toString('utf8'));
     this.push(chunk);
     callback();
+    
 };
 
 
